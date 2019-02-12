@@ -4,6 +4,7 @@ import ClockIcon from "react-icons/lib/fa/clock-o"
 
 import Layout from "../layouts"
 import PostIcons from "../components/PostIcons"
+import RefreshContent from "../components/RefreshContent"
 
 import { rhythm } from "../utils/typography"
 
@@ -13,6 +14,7 @@ class Home extends Component {
 
     return (
       <Layout>
+        <RefreshContent/>
         <div css={{ marginBottom: rhythm(1) }}>
           <h1>Pages</h1>
           {data.allWordpressPage.edges.map(({ node }) => (
