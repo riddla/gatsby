@@ -49,7 +49,29 @@ rlInterface.on(`SIGINT`, () => {
   process.exit()
 })
 
+function bindShortcuts() {
+  const shortcuts = {
+    r: () => {
+      refresh(true)
+    },
+  }
+
+  process.stdin.on(`keypress`, function(s, key) {
+    console.log(`key: `, key)
+    if (shortcuts[key.name]) {
+      const f = shortcuts[key.name]
+      f()
+    }
+  })
+}
+
+function refresh() {
+  console.log(`Refreshing source data`)
+  sourceNodes()
+}
+
 async function startServer(program) {
+  bindShortcuts()
   const directory = program.directory
   const directoryPath = withBasePath(directory)
   const createIndexHtml = () =>
@@ -133,8 +155,7 @@ async function startServer(program) {
       !refreshToken || req.headers.authorization === refreshToken
 
     if (enableRefresh && authorizedRefresh) {
-      console.log(`Refreshing source data`)
-      sourceNodes()
+      refresh()
     }
     res.end()
   })
