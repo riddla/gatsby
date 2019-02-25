@@ -139,6 +139,21 @@ const styles = {
       },
     },
   },
+  codeSandboxIcon: {
+    paddingLeft: rhythm(1 / 8),
+    img: {
+      "&&": {
+        fill: colors.gray.bright,
+        fontWeight: `normal`,
+        borderBottom: `none`,
+        boxShadow: `none`,
+        "&:hover": {
+          background: `none`,
+          fill: colors.gatsby,
+        },
+      },
+    },
+  },
   meta: {
     ...scale(-1 / 4),
     alignItems: `baseline`,

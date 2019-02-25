@@ -9,6 +9,7 @@ import styles from "../shared/styles"
 import ThumbnailLink from "../shared/thumbnail"
 import EmptyGridItems from "../shared/empty-grid-items"
 import V2Icon from "../../assets/v2icon.svg"
+import { CodeSandboxIcon } from "../../assets/logos"
 import get from "lodash/get"
 
 const StartersList = ({ urlState, starters, count, sortRecent }) => {
@@ -66,7 +67,11 @@ const StartersList = ({ urlState, starters, count, sortRecent }) => {
             slug,
             stars,
           } = starter.fields.starterShowcase
-          const { url: demoUrl } = starter
+          const { url: demoUrl, repo } = starter
+          const codeSandboxUrl = `https://codesandbox.io/s/${repo.replace(
+            `https://github.com`,
+            `github`
+          )}`
 
           return (
             starter.fields && ( // have to filter out null fields from bad data
@@ -88,7 +93,10 @@ const StartersList = ({ urlState, starters, count, sortRecent }) => {
                   }}
                 >
                   <div
-                    css={{ display: `flex`, justifyContent: `space-between` }}
+                    css={{
+                      display: `flex`,
+                      justifyContent: `space-between`,
+                    }}
                   >
                     <span css={{ color: colors.gray.dark }}>{owner} /</span>
                     <span css={{ display: `flex` }}>
@@ -96,7 +104,10 @@ const StartersList = ({ urlState, starters, count, sortRecent }) => {
                         <img
                           src={V2Icon}
                           alt="Gatsby v2"
-                          css={{ marginBottom: 0, marginRight: rhythm(2 / 8) }}
+                          css={{
+                            marginBottom: 0,
+                            marginRight: rhythm(2 / 8),
+                          }}
                         />
                       )}
                       <div css={{ display: `inline-block` }}>
@@ -132,7 +143,10 @@ const StartersList = ({ urlState, starters, count, sortRecent }) => {
                     {description || `No description`}
                   </div>
                   <div
-                    css={{ display: `flex`, justifyContent: `space-between` }}
+                    css={{
+                      display: `flex`,
+                      justifyContent: `space-between`,
+                    }}
                   >
                     <div css={{ display: `inline-block` }}>
                       Updated {new Date(lastUpdated).toLocaleDateString()}
@@ -144,7 +158,9 @@ const StartersList = ({ urlState, starters, count, sortRecent }) => {
                         rel="noopener noreferrer"
                         css={{
                           ...styles.shortcutIcon,
-                          svg: { verticalAlign: `text-top !important` },
+                          svg: {
+                            verticalAlign: `text-top !important`,
+                          },
                         }}
                       >
                         <GithubIcon />
@@ -156,10 +172,34 @@ const StartersList = ({ urlState, starters, count, sortRecent }) => {
                         rel="noopener noreferrer"
                         css={{
                           ...styles.shortcutIcon,
-                          svg: { verticalAlign: `text-top !important` },
+                          svg: {
+                            verticalAlign: `text-top !important`,
+                          },
                         }}
                       >
                         <LaunchDemoIcon />
+                      </a>
+                      {` `}
+                      <a
+                        href={codeSandboxUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        css={{
+                          ...styles.codeSandboxIcon,
+                          svg: {
+                            verticalAlign: `text-top !important`,
+                          },
+                        }}
+                      >
+                        <img
+                          src={CodeSandboxIcon}
+                          alt="Open in CodeSandbox"
+                          css={{
+                            marginBottom: 0,
+                            marginRight: rhythm(2 / 8),
+                            width: `15px`,
+                          }}
+                        />
                       </a>
                     </span>
                   </div>

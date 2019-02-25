@@ -6,6 +6,7 @@ import SegmentIcon from "./segment.svg"
 import FormidableIcon from "./formidable.svg"
 import FabricIcon from "./fabric.svg"
 import NetlifyIcon from "./netlify.svg"
+import CodeSandboxIcon from "./codesandbox.svg"
 
 export {
   JSIcon,
@@ -16,4 +17,5 @@ export {
   FormidableIcon,
   FabricIcon,
   NetlifyIcon,
+  CodeSandboxIcon,
 }
